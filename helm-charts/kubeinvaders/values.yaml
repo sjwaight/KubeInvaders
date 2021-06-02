@@ -32,11 +32,11 @@ nameOverride: ""
 fullnameOverride: ""
 
 service:
-  type: ClusterIP
-  port: 8080
+  type: LoadBalancer
+  port: 80
 
 ingress:
-  enabled: true
+  enabled: false
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
   hostName: kubeinvaders.local
@@ -44,5 +44,7 @@ ingress:
   #  secretName: kubeinvaders.local
 
 resources: {}
-nodeSelector: {}
+nodeSelector: 
+  kubernetes.io/os: linux
+  type: virtual-kubelet
 tolerations: []
